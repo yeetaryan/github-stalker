@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GitHub Stalker - Track Users</title>
+  <link rel="stylesheet" href="style.css" />
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    rel="stylesheet"
+  />
+
+ <script src="https://www.gstatic.com/firebasejs/10.3.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.3.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.3.1/firebase-firestore-compat.js"></script>
+
+</head>
+
+<body>
+  <!-- Fullscreen Auth Container -->
+  <div id="authOverlay" class="auth-overlay">
+    <div class="auth-box">
+      <h2>Login / Sign Up</h2>
+      <input type="email" id="emailInput" placeholder="Email" />
+      <input type="password" id="passwordInput" placeholder="Password" />
+      <button id="signUpBtn">Sign Up</button>
+      <button id="loginBtn">Login</button>
+      <button id="logoutBtn" style="display: none;">Logout</button>
+      <p id="authStatus"></p>
+    </div>
+  </div>
+
+  <!-- Your App -->
+  <div id="appContainer" class="container" style="display: none;">
+    <!-- Header -->
+    <header class="header">
+  <div class="header-content">
+    <div class="logout-container">
+      <button id="logoutBtnTop" class="logout-btn">Logout</button>
+    </div>
+    <h1 class="title">
+      <i class="fab fa-github"></i>
+      GitHub Stalker
+    </h1>
+    <p class="subtitle">Track and monitor GitHub users effortlessly</p>
+  </div>
+</header>
+
+    <!-- Search Section -->
+    <section class="search-section">
+      <div class="search-container">
+        <div class="search-box">
+          <i class="fas fa-search search-icon"></i>
+          <input
+            type="text"
+            id="usernameInput"
+            placeholder="Enter GitHub username..."
+            class="search-input"
+          />
+          <button id="addUserBtn" class="search-btn">
+            <i class="fas fa-plus"></i>
+            Add User
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Users Grid -->
+    <section class="users-section">
+      <div class="users-header">
+        <h2 class="users-title">Tracked Users</h2>
+        <span id="userCount" class="user-count">0 users</span>
+      </div>
+      <div id="usersGrid" class="users-grid"></div>
+      <div id="emptyState" class="empty-state">
+        <i class="fab fa-github"></i>
+        <h3>No users tracked yet</h3>
+        <p>Start by adding a GitHub username above</p>
+      </div>
+    </section>
+
+    <!-- Loading Spinner -->
+    <div id="loadingSpinner" class="loading-spinner">
+      <div class="spinner"></div>
+      <p>Fetching user data...</p>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="auth.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
